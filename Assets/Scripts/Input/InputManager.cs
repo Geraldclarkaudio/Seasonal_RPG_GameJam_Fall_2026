@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -6,6 +8,8 @@ public class InputManager : MonoBehaviour
 
     public Vector2 Move => _inputSystem.Player.Move.ReadValue<Vector2>(); // made movement a property that is only accessed when used. 
 
+    [SerializeField]
+    private Player_Interaction _playerInteraction;
 
     void OnEnable() // set up three basic button type inputs for now. Player movement is polled in the player movement class
     {
@@ -17,14 +21,12 @@ public class InputManager : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-
-    }
-
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("Interact");
+        if(_playerInteraction.GetCurrentNPC() != null)
+        {
+            _playerInteraction.Interact_NPC();
+        }
     }
 
     private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
