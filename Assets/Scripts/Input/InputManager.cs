@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.Design.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private Player_Interaction _playerInteraction;
+    [SerializeField]
+    private Player_Movement _playerMovement;
 
     void OnEnable() // set up three basic button type inputs for now. Player movement is polled in the player movement class
     {
@@ -31,7 +34,10 @@ public class InputManager : MonoBehaviour
 
     private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("Jump");
+        if (_playerMovement.GetIsGrounded())
+        {
+            _playerMovement.Jump();
+        }
     }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
