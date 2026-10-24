@@ -2,7 +2,7 @@
 
 namespace WorldData {
 /// <summary>
-/// A named number the game keeps track of, like "Crows Killed" or "Gold".
+/// A named number the game keeps track of, like stuff obtained or enemies killed
 /// The asset is only the name. The current value lives in WorldState.
 /// </summary>
 [CreateAssetMenu(fileName = "Counter", menuName = "World/Counter")]
