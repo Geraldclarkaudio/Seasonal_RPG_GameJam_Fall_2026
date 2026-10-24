@@ -1,0 +1,17 @@
+﻿using System.Collections.Generic;
+using Quest.Conditions.Base;
+using UnityEngine;
+
+namespace Quest.Conditions {
+[CreateAssetMenu(fileName = "OrCondition", menuName = "Quest/Conditions/Or")]
+public class OrCondition : BaseCondition {
+	[SerializeField] List<BaseCondition> conditions = new();
+
+	protected override bool IsConditionMet() {
+		foreach (BaseCondition condition in conditions) {
+			if (condition.IsMet()) return true;
+		}
+		return false;
+	}
+}
+}
