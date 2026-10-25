@@ -11,5 +11,13 @@ public class FlagCondition : BaseCondition {
 	protected override bool IsConditionMet() {
 		return WorldState.IsSet(flag) == expectedValue;
 	}
+	
+	#if UNITY_EDITOR
+		void OnValidate() {
+			if (!flag) {
+				Debug.LogWarning($"{name}: Flag condition is missing", this);
+			}
+		}
+	#endif
 }
 }
