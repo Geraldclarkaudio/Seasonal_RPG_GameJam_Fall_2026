@@ -6,7 +6,7 @@ namespace Quest.Conditions {
 [CreateAssetMenu(fileName = "HasItemCondition", menuName = "Quest/Conditions/Has Item")]
 public class HasItemCondition : BaseCondition {
 	[SerializeField] ItemData item;
-	[SerializeField] int amount = 1;
+	[Min(0)][SerializeField] int amount = 1;
 
 	protected override bool IsConditionMet() {
 		return WorldState.GetItemCount(item) >= amount;
@@ -15,5 +15,13 @@ public class HasItemCondition : BaseCondition {
 	public override string GetProgress() {
 		return $"{WorldState.GetItemCount(item)}/{amount}";
 	}
+	
+	#if UNITY_EDITOR
+		void OnValidate() {
+			if (item == null) {
+				Debug.LogError($"{name}: Condition requires a valid item", this);
+			}
+		}
+	#endif
 }
 }
