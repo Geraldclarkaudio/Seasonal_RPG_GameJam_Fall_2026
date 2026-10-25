@@ -15,7 +15,7 @@ public class FlagCondition : BaseCondition {
 	#if UNITY_EDITOR
 		void OnValidate() {
 			if (!flag) {
-				Debug.LogWarning($"{name}: Flag condition is missing", this);
+				Debug.LogError($"{name}: Flag condition is missing", this);
 			}
 		}
 	#endif

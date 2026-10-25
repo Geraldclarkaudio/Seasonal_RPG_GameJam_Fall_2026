@@ -17,11 +17,11 @@ public class AndCondition : BaseCondition {
 	#if UNITY_EDITOR
 		void OnValidate() {
 			if  (conditions.Count < 2) {
-				Debug.LogWarning($" {name}: AND needs at least 2 conditions ", this);
+				Debug.LogError($" {name}: AND needs at least 2 conditions ", this);
 			}
 
 			if (conditions.Contains(null)) {
-				Debug.LogWarning($" {name}: AND has an empty slot ", this);
+				Debug.LogError($" {name}: AND has an empty slot ", this);
 			}
 		}
 	#endif
