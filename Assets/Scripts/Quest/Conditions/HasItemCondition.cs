@@ -16,12 +16,10 @@ public class HasItemCondition : BaseCondition {
 		return $"{WorldState.GetItemCount(item)}/{amount}";
 	}
 	
-	#if UNITY_EDITOR
-		void OnValidate() {
-			if (item == null) {
-				Debug.LogError($"{name}: Condition requires a valid item", this);
-			}
+	void OnValidate() {
+		if (item == null) {
+			Debug.LogError($"{name}: Condition requires a valid item", this);
 		}
-	#endif
+	}
 }
 }

@@ -10,12 +10,10 @@ public class NotCondition : BaseCondition {
 		return !condition.IsMet();
 	}
 	
-	#if UNITY_EDITOR
-		void OnValidate() {
-			if (condition == null) {
-				Debug.LogError($"{name}: Condition requires a valid condition of any type", this);
-			}
+	void OnValidate() {
+		if (condition == null) {
+			Debug.LogError($"{name}: Condition requires a valid condition of any type", this);
 		}
-	#endif
+	}
 }
 }

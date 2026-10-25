@@ -12,12 +12,10 @@ public class FlagCondition : BaseCondition {
 		return WorldState.IsSet(flag) == expectedValue;
 	}
 	
-	#if UNITY_EDITOR
-		void OnValidate() {
-			if (!flag) {
-				Debug.LogError($"{name}: Flag condition is missing", this);
-			}
+	void OnValidate() {
+		if (!flag) {
+			Debug.LogError($"{name}: Flag condition is missing", this);
 		}
-	#endif
+	}
 }
 }

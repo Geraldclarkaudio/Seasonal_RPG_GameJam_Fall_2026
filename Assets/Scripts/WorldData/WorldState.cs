@@ -61,8 +61,8 @@ public static class WorldState {
 	}
 
 	/// <summary>
-	/// Returns a new list, so it is safe to change quest states while looping over it.
-	/// NOT_STARTED quests are only included if they were explicitly set back to NOT_STARTED.
+	/// Returns a new list, so it is safe to change quest states while looping over it
+	/// NOT_STARTED quests are only included if they were explicitly set back to NOT_STARTED
 	/// </summary>
 	public static List<QuestItem> GetQuests(QuestState state) {
 		List<QuestItem> result = new();
@@ -72,7 +72,7 @@ public static class WorldState {
 		return result;
 	}
 
-	// TODO: placeholder inventory. HasItemCondition should read from the real inventory once it exists.
+	// TODO: placeholder inventory. HasItemCondition should read from the real inventory once it exists
 	public static int GetItemCount(ItemData item) => items.TryGetValue(item, out int count) ? count : 0;
 
 	public static void AddItem(ItemData item, int amount = 1) {
@@ -85,7 +85,7 @@ public static class WorldState {
 		Changed?.Invoke();
 	}
 
-	// TODO: placeholder. LocationReachedCondition should read from the real location system once it exists.
+	// TODO: placeholder. LocationReachedCondition should read from the real location system once it exists
 	public static bool HasReached(Location location) => reachedLocations.Contains(location);
 
 	public static void MarkReached(Location location) {

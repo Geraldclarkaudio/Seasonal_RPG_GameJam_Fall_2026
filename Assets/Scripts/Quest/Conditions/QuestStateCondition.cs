@@ -11,5 +11,14 @@ public class QuestStateCondition : BaseCondition {
 	protected override bool IsConditionMet() {
 		return WorldState.GetQuestState(quest) == state;
 	}
+	
+
+	void OnValidate() {
+		if (quest == null) {
+			Debug.LogError($"{name}: Quest is required", this);
+		}
+	}
+		
+
 }
 }

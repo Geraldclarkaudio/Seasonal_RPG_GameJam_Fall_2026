@@ -13,17 +13,16 @@ public class AndCondition : BaseCondition {
 		}
 		return true;
 	}
-
-	#if UNITY_EDITOR
-		void OnValidate() {
-			if  (conditions.Count < 2) {
-				Debug.LogError($" {name}: AND needs at least 2 conditions ", this);
-			}
-
-			if (conditions.Contains(null)) {
-				Debug.LogError($" {name}: AND has an empty slot ", this);
-			}
+	
+	void OnValidate() {
+		if  (conditions.Count < 2) {
+			Debug.LogError($" {name}: AND needs at least 2 conditions ", this);
 		}
-	#endif
+
+		if (conditions.Contains(null)) {
+			Debug.LogError($" {name}: AND has an empty slot ", this);
+		}
+	}
+
 }
 }
