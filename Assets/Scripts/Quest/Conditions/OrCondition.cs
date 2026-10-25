@@ -13,5 +13,13 @@ public class OrCondition : BaseCondition {
 		}
 		return false;
 	}
+	
+	#if UNITY_EDITOR
+		void OnValidate() {
+			if (conditions.Count < 2) {
+				Debug.LogError($"{name}: Condition requires 2 conditions at least", this);
+			}
+		}
+	#endif
 }
 }
