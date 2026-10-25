@@ -1,8 +1,8 @@
 ﻿using System;
-using Quest.Conditions;
 using Quest.Conditions.Base;
 using UnityEngine;
 using WorldData;
+using WorldData.Actions.Base;
 
 namespace Quest {
 public class QuestManager : MonoBehaviour {
@@ -48,6 +48,7 @@ public class QuestManager : MonoBehaviour {
 		Run(() => {
 			WorldState.SetQuestState(quest, QuestState.ACTIVE);
 			QuestStarted?.Invoke(quest);
+			BaseAction.ExecuteAll(quest.OnStart, quest);
 		});
 		return true;
 	}
@@ -63,8 +64,8 @@ public class QuestManager : MonoBehaviour {
 
 		Run(() => {
 			WorldState.SetQuestState(quest, QuestState.COMPLETED);
-			// TODO: run the quest's outcome here once outcomes exist.
 			QuestCompleted?.Invoke(quest);
+			BaseAction.ExecuteAll(quest.OnComplete, quest);
 		});
 		return true;
 	}
@@ -73,6 +74,7 @@ public class QuestManager : MonoBehaviour {
 		Run(() => {
 			WorldState.SetQuestState(quest, QuestState.FAILED);
 			QuestFailed?.Invoke(quest);
+			BaseAction.ExecuteAll(quest.OnFail, quest);
 		});
 	}
 
@@ -83,7 +85,7 @@ public class QuestManager : MonoBehaviour {
 
 	/// <summary>
 	/// Runs a quest change, then re-checks active quests until nothing else changes.
-	/// Changes made while busy (by outcomes or event listeners) are queued instead of
+	/// Changes made while busy (by quest actions or event listeners) are queued instead of
 	/// re-checking halfway, so QuestStarted always fires before QuestCompleted.
 	/// </summary>
 	void Run(Action change) {
