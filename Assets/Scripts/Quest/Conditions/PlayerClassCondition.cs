@@ -10,5 +10,13 @@ public class PlayerClassCondition : BaseCondition {
 	protected override bool IsConditionMet() {
 		return WorldState.CurrentClass == playerClass;
 	}
+	
+	#if UNITY_EDITOR
+		void OnValidate() {
+			if (playerClass == null) {
+				Debug.LogError($"{name}: Condition requires a PlayerClass assigned", this);
+			}
+		}
+	#endif
 }
 }
