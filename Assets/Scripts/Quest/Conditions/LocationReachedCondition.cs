@@ -10,5 +10,13 @@ public class LocationReachedCondition : BaseCondition {
 	protected override bool IsConditionMet() {
 		return WorldState.HasReached(location);
 	}
+	
+	#if UNITY_EDITOR
+	void OnValidate() {
+		if (location == null) {
+			Debug.LogError($"{name}: Condition requires a valid location", this);
+		}
+	}
+#endif
 }
 }
