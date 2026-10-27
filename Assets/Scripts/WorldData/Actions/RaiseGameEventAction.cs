@@ -3,7 +3,7 @@ using WorldData.Actions.Base;
 
 namespace WorldData.Actions {
 /// <summary>
-/// Raises a GameEvent, so anything outside the quest system (doors, cutscenes, music) can react.
+/// Raises a GameEvent, so anything outside the quest system can react
 /// </summary>
 [CreateAssetMenu(fileName = "RaiseGameEventAction", menuName = "World/Actions/Raise Game Event")]
 public class RaiseGameEventAction : BaseAction {

@@ -5,7 +5,7 @@ namespace WorldData.Actions {
 [CreateAssetMenu(fileName = "AddToCounterAction", menuName = "World/Actions/Add To Counter")]
 public class AddToCounterAction : BaseAction {
 	[SerializeField] Counter counter;
-	[Tooltip("Use a negative number to subtract")]
+	[Tooltip("this is including negative numbers when needed")]
 	[SerializeField] int amount = 1;
 
 	public override void Execute() {

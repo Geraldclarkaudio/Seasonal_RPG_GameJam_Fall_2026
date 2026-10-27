@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WorldData.Actions.Base {
 /// <summary>
-/// Used by quests (on start / complete / fail) and can be reused by dialogue, triggers, and so forth
+/// Used by quests mainly (on start / complete / fail) and can be reused by dialogue, triggers, and so forth
 /// </summary>
 public abstract class BaseAction : ScriptableObject {
 	public abstract void Execute();
