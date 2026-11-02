@@ -24,6 +24,7 @@ public class Player_Movement : MonoBehaviour
     Rigidbody _rb;
     [SerializeField]
     private float _gravity;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -37,6 +38,15 @@ public class Player_Movement : MonoBehaviour
     void Update()
     {
         Vector2 move = _input.Move;
+        //fip the sprite based on inputs. 
+        if (move.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (move.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
 
         transform.Translate(new Vector3(move.x, 0, 0) * _speed * Time.deltaTime); // left and right inputs only effect horizontal movement.   
     }

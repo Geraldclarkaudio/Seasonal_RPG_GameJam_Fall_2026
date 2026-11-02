@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     private Player_Interaction _playerInteraction;
     [SerializeField]
     private Player_Movement _playerMovement;
+    [SerializeField]
+    private Player_Combat _playerCombat;
 
     void OnEnable() // set up three basic button type inputs for now. Player movement is polled in the player movement class
     {
@@ -42,7 +44,7 @@ public class InputManager : MonoBehaviour
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("Attack");
+        _playerCombat.BasicAttack();
     }
 
 }
