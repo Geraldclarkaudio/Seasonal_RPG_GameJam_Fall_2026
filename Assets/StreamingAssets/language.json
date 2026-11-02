@@ -1,7 +1,8 @@
 {
   "en": {
-    "NPC1_Test1": "Im test text",
-    "NPC1_Test2": "Im also test text",
+    "Fangorum_Intro1": "Hello! I am Fangorum. I protect the forest from those who seek to destroy it.",
+    "Fangorum_Intro2": "As of late, the forest is teeming with hostile forces. I need your help.",
+    "Fangorum_Intro3": "If you help me clean this place up, I'll reward you for your help.",
     "NPC2_Test1": "Im test text 2",
     "NPC2_Test2": "Im also test text 2",
     "CharacterName_Line1": "I am character 1"
