@@ -227,4 +227,9 @@ using UnityEngine.UI;
                 canProceed = 0;
             }
         }
+
+    public void Test()
+    {
+        Debug.Log("Quest Assinged");
+    }
     }
