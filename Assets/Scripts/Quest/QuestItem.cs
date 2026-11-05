@@ -2,12 +2,13 @@
 using JetBrains.Annotations;
 using Quest.Conditions.Base;
 using UnityEngine;
+using Utility;
 using WorldData.Actions.Base;
 
 namespace Quest {
 [CreateAssetMenu(fileName = "Quest Item", menuName = "Quest/Quest Item")]
 public class QuestItem : ScriptableObject {
-    [SerializeField] string id;
+    [UniqueId] [SerializeField] string id;
     [SerializeField] string questName;
     [SerializeField][TextArea] string description;
     [SerializeField] QuestType questType;
