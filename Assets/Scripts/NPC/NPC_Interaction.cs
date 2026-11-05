@@ -11,6 +11,8 @@ public class NPC_Interaction : MonoBehaviour
     DialogueManager _dialogueManager;
     [SerializeField]
     Player_Interaction _playerInteraction;
+    [SerializeField]
+    private GameObject _interactablePrompt;
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class NPC_Interaction : MonoBehaviour
             //tell the dialogue manager this is the current dialogue to use if interacted with. 
             _dialogueManager.currentDialogue = _currentDialogue;
             _playerInteraction.SetCurrentNPC(this);
-
+            _interactablePrompt.SetActive(true);
         }
     }
 
@@ -37,6 +39,7 @@ public class NPC_Interaction : MonoBehaviour
             //tell the dialogue manager this is the current dialogue to use if interacted with. 
             _dialogueManager.currentDialogue = null;
             _playerInteraction.SetCurrentNPC(this);
+            _interactablePrompt.SetActive(false);
         }
     }
 

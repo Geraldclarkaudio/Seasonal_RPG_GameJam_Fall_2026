@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c9f57192ce29645b278ff1de4bd561, type: 3}
-  m_Name: NPC1_TEST
+  m_Name: Fangornum
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   dialogueID: 0
   key:
-  - NPC1_Test1
-  - NPC1_Test2
-  - CharacterName_Line1
+  - Fangorum_Intro1
+  - Fangorum_Intro2
+  - Fangorum_Intro3
   icons:
-  - {fileID: 21300000, guid: a270b5534127ca545b53fc8aa732027b, type: 3}
-  - {fileID: 21300000, guid: a270b5534127ca545b53fc8aa732027b, type: 3}
-  - {fileID: 21300000, guid: a270b5534127ca545b53fc8aa732027b, type: 3}
+  - {fileID: 21300000, guid: 8d8d18fc7933c7f4ca343cdb815ef479, type: 3}
+  - {fileID: 21300000, guid: 8d8d18fc7933c7f4ca343cdb815ef479, type: 3}
+  - {fileID: 21300000, guid: 8d8d18fc7933c7f4ca343cdb815ef479, type: 3}
   speakerName:
-  - NPC1
-  - NPC1
-  - 'Thoomas '
+  - Fangornum
+  - Fangornum
+  - Fangornum
   _animations: []
   _newUIEvents: []
   _dialoguePositionChanges: []
   _eventTriggers: []
-  _endDialogueEvent: {fileID: 0}
+  _endDialogueEvent: {fileID: 11400000, guid: 4a4301415614cb14b9247900a526974c, type: 2}
   _postDialogueEvents: []

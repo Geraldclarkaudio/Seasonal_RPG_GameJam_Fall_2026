@@ -135,9 +135,6 @@ using UnityEngine.UI;
             {
                 _speakerName.text = currentDialogue.speakerName[keyIndex];
             }
-
-            textRate = textComponent.text.Length * 0.0667f;
-            canProceed = Time.time + textRate;
         }
 
         public void NextLine()
@@ -192,9 +189,6 @@ using UnityEngine.UI;
                     {
                         _speakerName.text = currentDialogue.speakerName[keyIndex];
                     }
-
-                    textRate = textComponent.text.Length * 0.0667f;
-                    canProceed = Time.time + textRate;
                 }
                 else if (keyIndex >= currentDialogue.key.Length - 1) // at the end of the keys
                 {
@@ -213,7 +207,7 @@ using UnityEngine.UI;
 
                    // dialogueIndex++; // move to the next dialogue asset for the next time dialogues take place. 
                     dialogueIsActive = false;
-                keyIndex = 0;
+                    keyIndex = 0;
                     _dialogueCanvas.enabled = false;
                     onEndDialogue?.Invoke(); // can cause problems if more than one thing subs to this in each scene..
                 }
@@ -233,4 +227,9 @@ using UnityEngine.UI;
                 canProceed = 0;
             }
         }
+
+    public void Test()
+    {
+        Debug.Log("Quest Assinged");
+    }
     }
