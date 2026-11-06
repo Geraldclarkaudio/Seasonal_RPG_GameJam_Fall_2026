@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 358940020}
   - component: {fileID: 358940019}
   - component: {fileID: 358940018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temp_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,6 +579,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Movement
   _input: {fileID: 1996039688}
   _speed: 5
+  _jumpForce: 0
+  isGrounded: 0
+  groundCheck: {fileID: 0}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundDistance: 0.3
+  _gravity: 0
 --- !u!136 &1057771537
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -701,6 +709,91 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 1
+--- !u!1 &1611946856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611946859}
+  - component: {fileID: 1611946858}
+  - component: {fileID: 1611946857}
+  - component: {fileID: 1611946860}
+  m_Layer: 0
+  m_Name: TestLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1611946857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611946856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e011071eb77de344aebaf5f78114b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldData.LocationArea
+  location: {fileID: 11400000, guid: 860253e248347b349b4cf00847b6679f, type: 2}
+  gizmoColor: {r: 0.2, g: 0.8, b: 1, a: 0.2}
+  onEnter: {fileID: 0}
+  onExit: {fileID: 0}
+--- !u!65 &1611946858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611946856}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1611946859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611946856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.75, y: 0, z: 0.78925}
+  m_LocalScale: {x: 5.0239, y: 1, z: 7.3588}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1611946860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611946856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b16ae6e0af0d8943a4e681ad2282608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldData.LocationDebugDisplay
+  showOnScreen: 1
+  logChanges: 1
 --- !u!1 &1989562322
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   _playerInteraction: {fileID: 0}
+  _playerMovement: {fileID: 0}
 --- !u!4 &1996039689
 Transform:
   m_ObjectHideFlags: 0
@@ -801,3 +895,4 @@ SceneRoots:
   - {fileID: 358940021}
   - {fileID: 1057771540}
   - {fileID: 1989562324}
+  - {fileID: 1611946859}
