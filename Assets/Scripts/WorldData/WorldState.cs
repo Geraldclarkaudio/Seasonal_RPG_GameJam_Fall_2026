@@ -11,7 +11,7 @@ public static class WorldState {
 	static readonly Dictionary<ItemData, int> items = new(); // TODO: placeholder inventory . to be replaced with the real inventory system.
 	static readonly HashSet<Location> reachedLocations = new();
 	static Location currentLocation;
-	static PlayerClass currentClass; // TODO: placeholder
+	static PlayerClass currentClass;
 
 	/// <summary>
 	/// Fires after any value in the world state changes.
@@ -23,7 +23,6 @@ public static class WorldState {
 	/// </summary>
 	public static event Action<Location, Location> LocationChanged;
 
-	// TODO: placeholder. PlayerClassCondition should read from the real player class system or stuff 
 	public static PlayerClass CurrentClass {
 		get => currentClass;
 		set {
@@ -40,7 +39,7 @@ public static class WorldState {
 		items.Clear();
 		reachedLocations.Clear();
 		currentLocation = null;
-		currentClass = null;
+		currentClass = PlayerClass.KNIGHT;
 		Changed = null;
 		LocationChanged = null;
 	}
@@ -55,7 +54,7 @@ public static class WorldState {
 	public static int GetCount(Counter counter) => counters.TryGetValue(counter, out int value) ? value : 0;
 
 	public static void SetCount(Counter counter, int value) {
-		counters[counter] = value;
+		counters[counter] = counter.Clamp(value);
 		Changed?.Invoke();
 	}
 

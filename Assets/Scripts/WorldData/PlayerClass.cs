@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-
-namespace WorldData {
-// TODO: placeholder player class
-[CreateAssetMenu(fileName = "PlayerClass", menuName = "World/PlayerClass")]
-public class PlayerClass : ScriptableObject { }
+﻿namespace WorldData {
+// KNIGHT must stay first: it is the default, so every new game starts as Knight
+public enum PlayerClass {
+	KNIGHT,
+	PALADIN,
+	OATHBREAKER
+}
 }
