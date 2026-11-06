@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WorldData {
@@ -9,11 +10,11 @@ public class LocationArea : MonoBehaviour {
 	const string PLAYER_TAG = "Player";
 
 	[SerializeField] Location location;
-
-	[Header("Optional")]
-	[SerializeField] GameEvent onEnter;
-	[SerializeField] GameEvent onExit;
 	[SerializeField] Color gizmoColor = new(0.2f, 0.8f, 1f, 0.2f);
+
+	[Header("Optional Event Triggers")]
+	[SerializeField] List<GameEvent> onEnter = new();
+	[SerializeField] List<GameEvent> onExit = new();
 
 	public Location Location => location;
 
@@ -21,18 +22,28 @@ public class LocationArea : MonoBehaviour {
 		if (!other.CompareTag(PLAYER_TAG)) return;
 
 		WorldState.SetCurrentLocation(location);
-		if (onEnter) onEnter.Raise();
+		RaiseAll(onEnter);
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (!other.CompareTag(PLAYER_TAG)) return;
 
-		if (onExit) onExit.Raise();
+		RaiseAll(onExit);
+	}
+
+	static void RaiseAll(List<GameEvent> events) {
+		foreach (GameEvent gameEvent in events) {
+			if (gameEvent) gameEvent.Raise();
+		}
 	}
 
 	void OnValidate() {
 		if (!location) {
 			Debug.LogError($"{name}: LocationArea needs a Location assigned", this);
+		}
+
+		if (onEnter.Contains(null) || onExit.Contains(null)) {
+			Debug.LogError($"{name}: LocationArea has an empty event slot", this);
 		}
 
 		if (TryGetComponent(out Collider col) && !col.isTrigger) {

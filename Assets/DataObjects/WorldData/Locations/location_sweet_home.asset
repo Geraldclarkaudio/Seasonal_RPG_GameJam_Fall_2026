@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef031bc183f3a4408583fa17c328355, type: 3}
+  m_Name: location_sweet_home
+  m_EditorClassIdentifier: Assembly-CSharp::WorldData.Location
+  id: location_sweet_home
+  displayName: Sweet Home
+  description: 'A warm, peaceful, fairy-tale-like autumn atmosphere in the late afternoon.
+    The sun is still above the horizon but is already descending toward it, bathing
+    the landscape in
+
+    soft golden light. A gentle autumn breeze softly carries
+    the fallen leaves. The beautiful landscape, filled with warm sunlight, creates
+    a feeling of peace, safety, and family comfort.'

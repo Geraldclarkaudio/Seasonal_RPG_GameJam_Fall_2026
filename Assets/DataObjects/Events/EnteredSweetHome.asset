@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef031bc183f3a4408583fa17c328355, type: 3}
-  m_Name: location_dungeon
-  m_EditorClassIdentifier: Assembly-CSharp::WorldData.Location
+  m_Script: {fileID: 11500000, guid: 5a2d619d0d05e7e4a8ec89ac9bc56652, type: 3}
+  m_Name: EnteredSweetHome
+  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
