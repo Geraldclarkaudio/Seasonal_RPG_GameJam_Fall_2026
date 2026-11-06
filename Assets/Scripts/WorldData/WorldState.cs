@@ -9,13 +9,19 @@ public static class WorldState {
 	static readonly Dictionary<Counter, int> counters = new();
 	static readonly Dictionary<QuestItem, QuestState> questStates = new();
 	static readonly Dictionary<ItemData, int> items = new(); // TODO: placeholder inventory . to be replaced with the real inventory system.
-	static readonly HashSet<Location> reachedLocations = new(); // TODO: placeholder
+	static readonly HashSet<Location> reachedLocations = new();
+	static Location currentLocation;
 	static PlayerClass currentClass; // TODO: placeholder
 
 	/// <summary>
 	/// Fires after any value in the world state changes.
 	/// </summary>
 	public static event Action Changed;
+
+	/// <summary>
+	/// Fires when the current location changes. Gives (previous, current), either can be null
+	/// </summary>
+	public static event Action<Location, Location> LocationChanged;
 
 	// TODO: placeholder. PlayerClassCondition should read from the real player class system or stuff 
 	public static PlayerClass CurrentClass {
@@ -33,8 +39,10 @@ public static class WorldState {
 		questStates.Clear();
 		items.Clear();
 		reachedLocations.Clear();
+		currentLocation = null;
 		currentClass = null;
 		Changed = null;
+		LocationChanged = null;
 	}
 
 	public static bool IsSet(Flag flag) => flags.Contains(flag);
@@ -85,11 +93,29 @@ public static class WorldState {
 		Changed?.Invoke();
 	}
 
-	// TODO: placeholder. LocationReachedCondition should read from the real location system once it exists
 	public static bool HasReached(Location location) => reachedLocations.Contains(location);
 
 	public static void MarkReached(Location location) {
 		if (reachedLocations.Add(location)) Changed?.Invoke();
+	}
+
+	/// <summary>
+	/// The location the player is in now. Stays the last location after leaving every area. Null before any area was entered
+	/// </summary>
+	public static Location CurrentLocation => currentLocation;
+
+	/// <summary>
+	/// Also marks the location as reached
+	/// </summary>
+	public static void SetCurrentLocation(Location location) {
+		if (currentLocation == location) return;
+
+		Location previous = currentLocation;
+		currentLocation = location;
+		if (location) reachedLocations.Add(location);
+
+		LocationChanged?.Invoke(previous, location);
+		Changed?.Invoke();
 	}
 }
 }
