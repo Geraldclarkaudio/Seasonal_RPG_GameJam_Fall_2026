@@ -12,7 +12,7 @@ public class QuestItem : ScriptableObject {
     [SerializeField] string questName;
     [SerializeField][TextArea] string description;
     [SerializeField] QuestType questType;
-    [SerializeField] [CanBeNull] string questGiver; // TODO: needs to be changed to actual NPC or relevant NPC data/SO
+    [SerializeField] [CanBeNull] string questGiver;
     [SerializeField] [CanBeNull] BaseCondition startCondition;
     [SerializeField] BaseCondition completeCondition;
     [SerializeField] BaseCondition failCondition;
